@@ -1,0 +1,48 @@
+request = {
+    clientId: 'GLS',
+    brandId: 'GS',
+    orderDetails: {
+          orderNumber: "H"+order.id,
+          orderDate: order.processed_at/updated_at,
+          orderTotal: order.current_total_price/total_price
+        },
+    shipping: {
+        shipService: STANDARD,
+        requestedWarehouse: requested_facility
+    },
+    shippingAddress: {
+          firstName: truncate(first_name, 30),
+          lastName: truncate(last_name, 30),
+          address1: truncate(ship_address.address_1, 40),
+          city: truncate(ship_address.city, 40),
+          state: truncate(ship_address.state, 2),
+          postalCode: truncate(ship_address.zip, 10),
+          countryCode: truncate(ship_address.country, 2),
+          email: truncate(shipment.email, 50),
+          phoneNumber: format_phone_number(ship_address.phone_number),
+          address2: truncate(ship_address.address_2, 40) ,
+          address3: truncate(ship_address.address_3, 40)
+    },
+    products: [
+        {
+            id: id,
+            product_code: product_name,
+            qty: 1
+        }
+    ],  
+    messaging:{
+        message: '',
+        messageFrom: '',
+        messageTo: ''
+    },
+    shipmentOptions: [{
+        key: pink_pouch,
+        type: fulfillment,
+        value: true 
+    },
+    {	
+        key: referenceId,
+        type: order,
+        value: GLO718730284
+    } ]
+  }
