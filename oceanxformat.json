@@ -1,4 +1,4 @@
-request = {
+payload: {
     clientId: 'GLS',
     brandId: 'GS',
     orderDetails: {
